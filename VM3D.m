@@ -85,7 +85,8 @@ classdef VM3D < handle
       II = eye(6, 6);
       I = [1;1;1;0;0;0;];
       ddf = (II - I * I') / sqrt(den);
-      ddf = ddf-((stress - I1 * I) * (stress - (I1 / 3) * I)') * den^-1.5;
+      ddf = ddf - ...
+            ((stress - (I1 / 3) * I) * (stress - (I1 / 3) * I)') / den^1.5;
     end
     %----------------------------------------------------------------------
     function [df] = get_dfdgamma(this, k, dk_dgamma)
